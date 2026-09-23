@@ -1,0 +1,24 @@
+cityname = input("Enter the name of a city: ")
+temperature = input("Enter the temperature in that city: ")
+weather = input ("Enter the weather condition in that city: ")
+humidty = input("Enter the humidity percentage in that city: ")
+
+print("\nWeather Information for", cityname)
+print("City Name:", cityname)
+print("Temperature:", temperature+"°C")
+print("Weather Condition:", weather)
+print("Humidity Percentage:", humidty+"%")
+
+
+name = input("Enter your name: ")
+print(name + ", what three numbers would you like to multiply together?")
+num1 = input("Enter the first number: ")
+num2 = input("Enter the second number: ")
+num3 = input("Enter the third number: ")
+
+multiplication = float(num1) * float(num2) * float(num3)
+print("The multiplication of the three numbers is:", multiplication)
+
+
+name = input("Enter your name: ")
+print("Hello,", name + "! Welcome to TechSolutions.")

@@ -1,0 +1,104 @@
+def read_number(prompt):
+    """Keep asking for a number until a valid one is entered."""
+    while True:
+        raw = input(prompt)
+        try:
+            return float(raw)
+        except ValueError:
+            print("Please enter a valid number.")
+
+
+def classify_sum(total):
+    if total > 0:
+        return "positive"
+    elif total < 0:
+        return "negative"
+    else:
+        return "zero"
+
+
+def Letter_and_gpa(average):
+    if average >= 90:
+        return "A", 4.0
+    elif average >= 80:
+        return "B", 3.0
+    elif average >= 70:
+        return "C", 2.0
+    elif average >= 60:
+        return "D", 1.0
+    else:
+        return "F", 0.0
+
+
+def sum_calculator():
+    print("Enter at least two numbers:")
+    print("Type 'done' when you want to finish.")
+
+    while True:
+        first = input("First number (or 'done' to quit): ")
+        if first.lower() == "done":
+            print("Goodbye.")
+            break
+
+        try:
+            first_number = float(first)
+        except ValueError:
+            print("Please enter a valid number.")
+            continue
+
+        second_number = read_number("Second number: ")
+        extra = []
+
+        while True:
+            more = input("Add another number? (enter a number, or press Enter to skip): ").strip()
+            if more == "":
+                break
+            try:
+                extra.append(float(more))
+            except ValueError:
+                print("Error: that is not a number. Please try again.")
+
+        total = first_number + second_number + sum(extra)
+        print(f"The sum is {total}, which is {classify_sum(total)}.")
+
+
+def grade_calculator():
+    scores = []
+    while True:
+        score = input("Enter a test score (or 'done' to finish): ")
+        if score.lower() == "done":
+            break
+        try:
+            scores.append(float(score))
+        except ValueError:
+            print("Please enter a valid number.")
+
+    if scores:
+        average = sum(scores) / len(scores)
+        letter, gpa = Letter_and_gpa(average)
+        print(f"Average score: {average:.2f}")
+        print(f"Letter grade: {letter}")
+        print(f"GPA: {gpa}")
+
+
+def main():
+    while True:
+        print("Choose a program:")
+        print("1. Sum checker")
+        print("2. Grade calculator")
+        print("3. Exit")
+        choice = input("Enter 1, 2, or 3: ").strip().lower()
+
+        if choice == "1":
+            sum_calculator()
+        elif choice == "2":
+            grade_calculator()
+        elif choice in ["3", "exit", "done", "quit"]:
+            print("Goodbye.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+
+if __name__ == "__main__":
+    main()
